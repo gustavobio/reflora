@@ -14,7 +14,7 @@
 #' }
 #'
 #' @docType package
-#' @import httr dplyr rvest
+#' @import httr dplyr rvest utils xml2
 #' @name reflora
 #' @aliases reflora reflora-package
 NULL
