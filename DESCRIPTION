@@ -7,5 +7,12 @@ Authors@R: person("Gustavo", "Carvalho", email = "gustavo.bio@gmail.com",
 Description: A package to download images from the Brazilian Reflora Program (http://www.splink.org.br) 
   in bulk.
 License: GPL-3
+Imports:
+    httr,
+    dplyr,
+    rvest,
+    utils,
+    xml2
 LazyData: TRUE
+BugReports: http://www.github.com/gustavobio/reflora/issues
 RoxygenNote: 6.0.1
