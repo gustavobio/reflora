@@ -1,0 +1,11 @@
+Package: reflora
+Type: Package
+Title: Download Images of Specimens from the Reflora Program
+Version: 0.1.0
+Authors@R: person("Gustavo", "Carvalho", email = "gustavo.bio@gmail.com",
+  role = c("aut", "cre"))
+Description: A package to download images from the Brazilian Reflora Program (http://www.splink.org.br) 
+  in bulk.
+License: GPL-3
+LazyData: TRUE
+RoxygenNote: 6.0.1
