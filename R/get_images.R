@@ -21,6 +21,7 @@ get_images <- function(taxon) {
                regexpr("(?<=/imagecode/)(.*)(?=/size)", image_urls, perl = T))
   if (!dir.exists(taxon))
     dir.create(taxon)
+  cat("Downloading", length(image_urls), "images:\n")
   pb <- txtProgressBar(min = 0, max = length(image_urls), style = 3)
   for (i in seq_along(image_urls)) {
     # print(i)
