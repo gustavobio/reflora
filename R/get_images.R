@@ -42,6 +42,7 @@ get_images <- function(taxon) {
     }
   }
   close(pb)
+  cat("Images downloaded to", paste0(getwd(), "/", taxon, "/\n"))
 }
 
 #' Get the base url for a taxon
