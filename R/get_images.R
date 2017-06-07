@@ -6,54 +6,14 @@
 #' useful by itself. \code{get_number_of_images} returns the number of images available
 #' for a given taxon. \code{get_image_urls} returns the urls for all images of a given
 #' taxon. \code{get_images} returns NULL and downloads all imagens for the taxon.
-#' @export
 #' @examples
 #' taxon <- "Miconia albicans"
-#' get_base_url(taxon)
 #' \dontrun{
 #' get_number_of_images(taxon)
 #' get_image_urls(taxon)
 #' get_images(taxon)
 #' }
-
-get_base_url <- function(taxon, offset = 0) {
-  URLencode(
-    paste(
-      "http://www.splink.org.br/showImages?ts_any=",
-      taxon,
-      "&extra=withImages&search_id=2&search_seq=8&size=thumb&offset=",
-      offset,
-      sep = ""
-    )
-  )
-}
-
-get_number_of_images <- function(taxon) {
-  n <- read_html(get_base_url(taxon)) %>%
-    html_node("b") %>%
-    html_text()
-  regexp <- gregexpr("\\d+", n, perl = T)
-  as.numeric(regmatches(n, regexp)[[1]][3])
-}
-
-get_image_urls <- function(taxon) {
-  n <- get_number_of_images(taxon)
-  links <- NULL
-  for (i in 1:floor(n/100)) {
-    tries <- 1
-    repeat {
-      if (tries > 3) stop("Can't reach the website. Please try again later.")
-      link <- try(read_html(get_base_url(taxon, offset = i * 100)) %>%
-                    html_nodes(xpath = '//a[@class="highslide"]') %>%
-                    html_attr(name = "href"))
-      if (!inherits(link, "try-error")) break
-      tries <- tries + 1
-    }
-    links <- c(links, link)
-  }
-  links
-}
-
+#' @export
 get_images <- function(taxon) {
   image_urls <- get_image_urls(taxon)
   image_names <-
@@ -81,5 +41,56 @@ get_images <- function(taxon) {
     }
   }
   close(pb)
+}
+
+#' Get the base url for a taxon
+#'
+#' @param taxon A unique taxon name.
+#' @param offset Page offset
+#' @export
+get_base_url <- function(taxon, offset = 0) {
+  URLencode(
+    paste(
+      "http://www.splink.org.br/showImages?ts_any=",
+      taxon,
+      "&extra=withImages&search_id=2&search_seq=8&size=thumb&offset=",
+      offset,
+      sep = ""
+    )
+  )
+}
+
+#' Get the number of images for a given taxon
+#'
+#' @param taxon A unique taxon name
+#' @export
+get_number_of_images <- function(taxon) {
+  n <- read_html(get_base_url(taxon)) %>%
+    html_node("b") %>%
+    html_text()
+  regexp <- gregexpr("\\d+", n, perl = T)
+  as.numeric(regmatches(n, regexp)[[1]][3])
+}
+
+#' Get the urls for a taxon
+#'
+#' @param taxon A unique taxon name
+#' @export
+get_image_urls <- function(taxon) {
+  n <- get_number_of_images(taxon)
+  links <- NULL
+  for (i in 1:floor(n/100)) {
+    tries <- 1
+    repeat {
+      if (tries > 3) stop("Can't reach the website. Please try again later.")
+      link <- try(read_html(get_base_url(taxon, offset = i * 100)) %>%
+                    html_nodes(xpath = '//a[@class="highslide"]') %>%
+                    html_attr(name = "href"))
+      if (!inherits(link, "try-error")) break
+      tries <- tries + 1
+    }
+    links <- c(links, link)
+  }
+  links
 }
 
