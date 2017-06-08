@@ -4,10 +4,14 @@
 \alias{get_number_of_images}
 \title{Get the number of images for a given taxon}
 \usage{
-get_number_of_images(taxon)
+get_number_of_images(any = NULL, family = NULL, institution_code = NULL)
 }
 \arguments{
-\item{taxon}{A unique taxon name}
+\item{any}{A search query to be matched against all fields.}
+
+\item{family}{Family name.}
+
+\item{institution_code}{An institution code.}
 }
 \description{
 Get the number of images for a given taxon

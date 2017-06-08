@@ -4,10 +4,14 @@
 \alias{get_image_urls}
 \title{Get the urls for a taxon}
 \usage{
-get_image_urls(taxon)
+get_image_urls(any = NULL, family = NULL, institution_code = NULL)
 }
 \arguments{
-\item{taxon}{A unique taxon name}
+\item{any}{A search query to be matched against all fields.}
+
+\item{family}{Family name.}
+
+\item{institution_code}{An institution code.}
 }
 \description{
 Get the urls for a taxon

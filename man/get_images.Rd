@@ -4,10 +4,14 @@
 \alias{get_images}
 \title{Download images from the Reflora Website.}
 \usage{
-get_images(taxon)
+get_images(any = NULL, family = NULL, institution_code = NULL)
 }
 \arguments{
-\item{taxon}{A unique taxon name. Can be anything (species, family, order).}
+\item{any}{A search query to be matched against all fields.}
+
+\item{family}{Family name.}
+
+\item{institution_code}{An institution code.}
 }
 \value{
 \code{get_base_url} Returns the base url for a given taxon. Not very

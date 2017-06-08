@@ -4,10 +4,15 @@
 \alias{get_base_url}
 \title{Get the base url for a taxon}
 \usage{
-get_base_url(taxon, offset = 0)
+get_base_url(any = NULL, family = NULL, institution_code = NULL,
+  offset = 0)
 }
 \arguments{
-\item{taxon}{A unique taxon name.}
+\item{any}{A search query to be matched against all fields.}
+
+\item{family}{Family name.}
+
+\item{institution_code}{An institution code.}
 
 \item{offset}{Page offset}
 }
