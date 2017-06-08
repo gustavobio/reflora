@@ -20,7 +20,7 @@ The main function is `get_images`, which will download all available images for 
 
 ```coffee
 get_images("Miconia albicans")
-get_images(family = "Melastomataceae", institution_code = "Unicamp")
+get_images(family = "Melastomataceae", institution_code = "UNICAMP")
 get_images("UEC175546")
 ```
 
