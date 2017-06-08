@@ -31,7 +31,7 @@ get_images <- function(any = NULL, family = NULL, institution_code = NULL) {
   path <- gsub("^\\_+|\\_+$", "", path)
   if (!dir.exists(path))
     dir.create(path)
-  cat("Downloading", length(image_urls), "images:\n")
+  cat("Downloading", length(image_urls), "images to", paste0(getwd(), "/", path, "/:\n"))
   pb <- txtProgressBar(min = 0, max = length(image_urls), style = 3)
   for (i in seq_along(image_urls)) {
     # print(i)
@@ -52,7 +52,6 @@ get_images <- function(any = NULL, family = NULL, institution_code = NULL) {
     }
   }
   close(pb)
-  cat("Images downloaded to", paste0(getwd(), "/", path, "/\n"))
 }
 
 #' Get the base url for a taxon
