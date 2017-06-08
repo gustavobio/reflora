@@ -24,6 +24,5 @@ get_images(family = "Melastomataceae", institution_code = "UNICAMP")
 get_images("UEC175546")
 ```
 
-Institution codes can be found at http://www.splink.org.br (
-Each call above will create a folder named as the combination of search queries in the current working directory. All imagens will be downloaded and stores in these folders. 
+Institution codes can be found at http://www.splink.org.br. Each call above will create a folder in the current working directory named as the combination of search queries. All images will be downloaded and stored in these folders. 
 Use `setwd()` to change the root path of these folders.
