@@ -37,6 +37,6 @@ get_images(family = "Rubiaceae")
 ![screenshot1](https://user-images.githubusercontent.com/30267/26937199-226d5e4a-4c47-11e7-8419-a1fc9ae1d991.png)
 
 Institution codes can be found at http://www.splink.org.br. Each call above will create a folder in the current working directory named as the combination of search queries. All images will be downloaded and stored in these folders. 
-Use `setwd()` to change the root path of these folders.
+Use `setwd()` to change the root path where the folders will be created.
 
 ![screenshot2](https://user-images.githubusercontent.com/30267/26937361-8afab9f8-4c47-11e7-83ec-1283b41fe093.png)
